@@ -17,6 +17,26 @@ class UserController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
     }
 
+    public function pdf()
+    {
+        $texto="";
+
+        
+        $conductors = DB::table('conductors')->select('idConductor','NomConductor','ApeConductor','Fechaingreso','FechaNa','Genero','Telefono')
+                        ->orderBy('Fechaingreso','desc')->paginate(100);
+        $porM = Conductor::whereNotNull('Genero')
+                        ->groupBy('Genero')
+                        ->selectRaw('Genero, count(*) as cantidad, (count(*) / (select count(*) from conductors)) as porcentaje')
+                        ->get();
+           
+           
+        
+        $pdf = Pdf::loadView('conductor.pdf', compact('conductors','porM'));
+        return $pdf->stream('reportePDF');
+        //return view('conductor.pdf', compact('conductors'));
+        
+    }
+
     public function create()
     {
         $user = new User();

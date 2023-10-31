@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 Route::get('Conductores/PDF',[App\Http\Controllers\ConductorController::class, 'pdf'])->name('conductores.pdf');
 Route::get('Boletos/PDF',[App\Http\Controllers\BoletoController::class, 'pdf'])->name('Boletos.pdf');
+Route::get('Usuarios/PDF',[App\Http\Controllers\BoletoController::class, 'pdf'])->name('Usuarios.pdf');
 
 Auth::routes();
 
