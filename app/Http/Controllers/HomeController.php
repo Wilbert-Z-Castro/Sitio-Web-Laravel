@@ -27,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         $Consulta1 = Conductor::whereNotNull('Genero')
         ->groupBy('Genero')
         ->selectRaw('Genero, count(*) as cantidad, (count(*) / (select count(*) from conductors)) as porcentaje')
