@@ -45,6 +45,8 @@
 										<th>Id Autobus</th>
 
                                         <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,12 +65,21 @@
                                             <td>
                                                 <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('viajes.show',$viaje->idViaje) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
                                                     <a class="btn btn-sm btn-success" href="{{ route('viajes.edit',$viaje->idViaje) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
                                             </td>
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>

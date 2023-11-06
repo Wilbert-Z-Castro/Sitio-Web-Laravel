@@ -47,6 +47,8 @@ class BoletoController extends Controller
                         ->groupBy('id_viaje')
                         ->selectRaw('id_viaje,(select Origen from viaje where idViaje=id_viaje) as Origen,(select Destino from viaje where idViaje=id_viaje) as Destino, count(*) as cantidad, (count(*) / (select count(*) from boleto)) as porcentaje')
                         ->orderBy('id_viaje','desc')
+                        ->WhereRaw('month((select FechaViaje from viaje where idViaje=id_viaje)) = month(now())')
+                        ->take(5)
                         ->get();
         $pdf = Pdf::loadView('boleto.pdf', compact('boletos','porM'));
         return $pdf->stream('reportePDF');
