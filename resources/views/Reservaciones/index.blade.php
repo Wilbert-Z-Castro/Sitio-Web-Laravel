@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('viajes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Hacer reservación') }}
                                 </a>
                               </div>
                         </div>
@@ -37,11 +37,11 @@
                                         <th>No</th>
                                         
 										<th>Idviaje</th>
-										<th>Fechaviaje</th>
-										<th>Descripcion</th>
+										<th>Fecha del viaje</th>
+										<th>Paradas</th>
 										<th>Origen</th>
 										<th>Destino</th>
-										<th>Disponibles</th>
+										<th>Lugares disponibles</th>
 										<th>Id Autobus</th>
 
                                         <th></th>

@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Autobu</span>
+                            <span class="card-title">{{ __('Consultar registro') }} Autobu</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('autobus.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('autobus.index') }}"> {{ __('Regresar') }}</a>
                         </div>
                     </div>
 
@@ -25,7 +25,7 @@
                             {{ $autobu->idAutobus }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Conductor:</strong>
+                            <strong>Conductor:</strong>
                             {{ $autobu->id_Conductor }}
                         </div>
                         <div class="form-group">

@@ -34,10 +34,10 @@
 
                              <div class="float-right">
                              <a href="{{ route('conductores.pdf') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('PDF') }}
+                                  {{ __('Reporte PDF') }}
                                 </a>
                                 <a href="{{ route('conductors.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear nuevo Registro') }}
                                 </a>
                               </div>
                         </div>
@@ -56,10 +56,10 @@
                                         <th>No</th>
                                         
 										<th>Idconductor</th>
-										<th>Nomconductor</th>
-										<th>Apeconductor</th>
-										<th>Fechaingreso</th>
-										<th>Fechana</th>
+										<th>Nombre</th>
+										<th>Apellido</th>
+										<th>Fecha de ingreso</th>
+										<th>Fecha Nacimiento</th>
 										<th>Genero</th>
 										<th>Telefono</th>
 
@@ -81,11 +81,11 @@
 
                                             <td>
                                                 <form action="{{ route('conductors.destroy',$conductor->idConductor) }}" method="POST" class="eliminar-conductor-form" id="form-eliminar-{{ $conductor->idConductor }}" >
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('conductors.show',$conductor->idConductor) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('conductors.edit',$conductor->idConductor) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('conductors.show',$conductor->idConductor) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('conductors.edit',$conductor->idConductor) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button  type="submit" class="btn btn-danger btn-sm eliminar-conductor"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button  type="submit" class="btn btn-danger btn-sm eliminar-conductor"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

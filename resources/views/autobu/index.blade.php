@@ -60,11 +60,11 @@
 
                                             <td>
                                                 <form action="{{ route('autobus.destroy',$autobu->idAutobus) }}" method="POST"  class="eliminar-autobus-form" id="form-eliminar-{{ $autobu->idAutobus }}">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('autobus.show',$autobu->idAutobus) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('autobus.edit',$autobu->idAutobus) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('autobus.show',$autobu->idAutobus) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('autobus.edit',$autobu->idAutobus) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm eliminar-autobus"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm eliminar-autobus"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

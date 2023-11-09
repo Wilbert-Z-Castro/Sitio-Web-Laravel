@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Viaje</span>
+                            <span class="card-title">{{ __('Consultar registro') }} Viaje</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('viajes.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('viajes.index') }}"> {{ __('Regresar') }}</a>
                         </div>
                     </div>
 
@@ -25,11 +25,11 @@
                             {{ $viaje->idViaje }}
                         </div>
                         <div class="form-group">
-                            <strong>Fechaviaje:</strong>
+                            <strong>Fecha del viaje:</strong>
                             {{ $viaje->FechaViaje }}
                         </div>
                         <div class="form-group">
-                            <strong>Descripcion:</strong>
+                            <strong>Paradas:</strong>
                             {{ $viaje->Descripcion }}
                         </div>
                         <div class="form-group">
@@ -45,7 +45,7 @@
                             {{ $viaje->Disponibles }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Autobus:</strong>
+                            <strong>Autobus asignado:</strong>
                             {{ $viaje->id_autobus }}
                         </div>
 

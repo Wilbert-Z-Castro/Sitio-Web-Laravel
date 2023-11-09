@@ -10,7 +10,7 @@
     </div>
 @endif
         <div class="form-group">
-            {{ Form::label('id') }}
+            {{ Form::label('idConductor') }}
             {{ Form::number('idConductor', $conductor->idConductor, ['readonly' => $num1 != 0,'class' => 'form-control' . ($errors->has('idConductor') ? ' is-invalid' : ''), 'placeholder' => 'Id del Conductor']) }}
             {!! $errors->first('idConductor', '<div class="invalid-feedback">:message</div>') !!}
         </div>

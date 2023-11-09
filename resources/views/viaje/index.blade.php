@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('viajes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear nuevo registro') }}
                                 </a>
                               </div>
                         </div>
@@ -37,12 +37,12 @@
                                         <th>No</th>
                                         
 										<th>Idviaje</th>
-										<th>Fechaviaje</th>
-										<th>Descripcion</th>
+										<th>Fecha de viaje</th>
+										<th>Paradas</th>
 										<th>Origen</th>
 										<th>Destino</th>
 										<th>Disponibles</th>
-										<th>Id Autobus</th>
+										<th>Autobus asignado</th>
 
                                         <th></th>
                                         <th></th>
@@ -64,19 +64,19 @@
 
                                             <td>
                                                 <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('viajes.show',$viaje->idViaje) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('viajes.show',$viaje->idViaje) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
                                                 </form>
                                             </td>
                                             <td>
                                                 <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
-                                                    <a class="btn btn-sm btn-success" href="{{ route('viajes.edit',$viaje->idViaje) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('viajes.edit',$viaje->idViaje) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                 </form>
                                             </td>
                                             <td>
                                                 <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                             

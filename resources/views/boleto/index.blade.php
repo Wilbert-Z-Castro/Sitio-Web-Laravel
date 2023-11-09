@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                              <a href="{{ route('Boletos.pdf') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('PDF') }}
+                                  {{ __('Reporte PDF') }}
                                 </a>
                               </div>
                         </div>
@@ -37,10 +37,10 @@
                                         <th>No</th>
                                         
 										<th>Idboleto</th>
-										<th>Fechaboleto</th>
+										<th>Fecha del boleto</th>
 										<th>Cantidad</th>
 										<th>Id Viaje</th>
-										<th>Id User</th>
+										<th>Usuario</th>
 
                                         <th></th>
                                     </tr>
@@ -58,11 +58,11 @@
 
                                             <td>
                                                 <form action="{{ route('boletos.destroy',$boleto->idBoleto) }}" method="POST" class="eliminar-boletos-form" id="form-eliminar-{{ $boleto->idBoleto }}">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('boletos.show',$boleto->idBoleto) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('boletos.edit',$boleto->idBoleto) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('boletos.show',$boleto->idBoleto) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('boletos.edit',$boleto->idBoleto) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

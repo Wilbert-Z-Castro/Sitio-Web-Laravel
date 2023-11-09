@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Conductor</span>
+                            <span class="card-title">{{ __('Consulta de registro') }} Conductor</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('conductors.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('conductors.index') }}"> {{ __('Regresar') }}</a>
                         </div>
                     </div>
 
@@ -25,19 +25,19 @@
                             {{ $conductor->idConductor }}
                         </div>
                         <div class="form-group">
-                            <strong>Nomconductor:</strong>
+                            <strong>Nombre:</strong>
                             {{ $conductor->NomConductor }}
                         </div>
                         <div class="form-group">
-                            <strong>Apeconductor:</strong>
+                            <strong>Apellido:</strong>
                             {{ $conductor->ApeConductor }}
                         </div>
                         <div class="form-group">
-                            <strong>Fechaingreso:</strong>
+                            <strong>Fecha de ingreso:</strong>
                             {{ $conductor->Fechaingreso }}
                         </div>
                         <div class="form-group">
-                            <strong>Fechana:</strong>
+                            <strong>Fecha de nacimiento:</strong>
                             {{ $conductor->FechaNa }}
                         </div>
                         <div class="form-group">

@@ -12,13 +12,13 @@
         <div class="form-group">
             {{ Form::label('idAutobus') }}
             
-                {{ Form::number('idAutobus', $autobu->idAutobus, ['readonly' => $num != 0,'class' => 'form-control' . ($errors->has('idAutobus') ? ' is-invalid' : ''), 'placeholder' => 'Idautobus']) }}
+                {{ Form::number('idAutobus', $autobu->idAutobus, ['readonly' => $num != 0,'class' => 'form-control' . ($errors->has('idAutobus') ? ' is-invalid' : ''), 'placeholder' => 'IdAutobus']) }}
             {!! $errors->first('idAutobus', '<div class="invalid-feedback">:message</div>') !!}
             </div>
         
         <div class="form-group">
-            {{ Form::label('id_Conductor') }}
-            {{ Form::select('id_Conductor',$conductor , $autobu->id_Conductor, ['class' => 'form-control' . ($errors->has('id_Conductor') ? ' is-invalid' : ''), 'placeholder' => 'Id Conductor']) }}
+            {{ Form::label('Conductor') }}
+            {{ Form::select('id_Conductor',$conductor , $autobu->id_Conductor, ['class' => 'form-control' . ($errors->has('id_Conductor') ? ' is-invalid' : ''), 'placeholder' => 'selecciona conductor']) }}
             {!! $errors->first('id_Conductor', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
