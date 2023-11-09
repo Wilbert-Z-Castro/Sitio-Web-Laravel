@@ -41,7 +41,7 @@ class ConductorController extends Controller
                         ->orderBy('Fechaingreso','desc')->paginate(100);
         $porM = Conductor::whereNotNull('Genero')
                         ->groupBy('Genero')
-                        ->selectRaw('Genero, count(*) as cantidad, (count(*) / (select count(*) from conductors)) as porcentaje')
+                        ->selectRaw('Genero, count(*) as cantidad, (count(*) / ((select count(*) from conductors))*100) as porcentaje')
                         ->get();
            
            

@@ -65,17 +65,55 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
+          ['Meses', 'Viajes realizados',{ role: 'style' }],
+          <?php
+          $meses = [
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre",
+          ];
+          $colores = [
+            "FF00FF",
+            "E6E6FA",
+            "0000FF",
+            "FF7F00",
+            "00FFFF",
+            "FF00CC",
+            "FFFF00",
+            "F5F5DC",
+            "FFD700",
+            "C0C0C0",
+            "000080",
+            "8FBC8F",
+          ];
+        
+          foreach($Consulta3 as $key => $value3):
+              $mes=$meses[$key];
+              $color=$colores[$key];
+              echo "['". $mes."',". $value3->cantidad.",'#". $color."'],"; 
+          endforeach;
+          ?>
+          /*['2014', 1000, 400, 200],
           ['2015', 1170, 460, 250],
           ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
+          ['2017', 1030, 540, 350]* 
+                <p>{{$value3->mes}}</p>
+                <p>{{$value3->cantidad}}</p>*/
         ]);
 
         var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+            title: 'Cantidad de viajes realizados al mes',
+            subtitle: '2023-2024',
           },
           bars: 'horizontal' // Required for Material Bar Charts.
         };
@@ -91,10 +129,15 @@
                 <div class="col-sm-12">
                     <div id="piechart" style="width: auto; height: 500px;" class="col-sm-4 my-1"></div>
                     <div id="piechart2" style="width: auto; height: 500px;"  class="col-sm-4 my-1"></div>
-                    <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+                    <div id="barchart_material" style="width: auto; height: 500px;" class="col-sm-4 my-1"></div>
                 </div>
             </div>
         </div>
+      @foreach($Consulta3 as $key => $value3):
+                <p>{{$value3->mes}}</p>
+                <p>{{$value3->cantidad}}</p>
+
+        @endforeach;
         
 @endsection
         
