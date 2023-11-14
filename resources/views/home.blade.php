@@ -81,6 +81,11 @@
             "Noviembre",
             "Diciembre",
           ];
+          $NMeses=[0,0,0,0,0,0,0,0,0,0,0,0];
+          foreach($Consulta3 as $key => $value3):
+                $cabezalMes=$value3->mes;
+                $NMeses[$cabezalMes-1]=$value3->cantidad;
+          endforeach;
           $colores = [
             "FF00FF",
             "E6E6FA",
@@ -95,14 +100,19 @@
             "000080",
             "8FBC8F",
           ];
-        
-          foreach($Consulta3 as $key => $value3):
-              $mes=$meses[$key];
-              $color=$colores[$key];
-              echo "['". $mes."',". $value3->cantidad.",'#". $color."'],"; 
-          endforeach;
+
+          for($i=0; $i<12;$i++){
+                echo"['".$meses[$i]."',". $NMeses[$i].",'#". $colores[$i]."'],";
+          }
+
           ?>
-          /*['2014', 1000, 400, 200],
+          /*
+                    foreach($Consulta3 as $key => $value3):
+                $mes=$meses[$key];
+                $color=$colores[$key];
+                echo "['". $mes."',". $value3->cantidad.",'#". $color."'],"; 
+          endforeach;
+          ['2014', 1000, 400, 200],
           ['2015', 1170, 460, 250],
           ['2016', 660, 1120, 300],
           ['2017', 1030, 540, 350]* 
@@ -123,22 +133,39 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
-
         <div class="containe r-fluid">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div id="piechart" style="width: auto; height: 500px;" class="col-sm-4 my-1"></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+
+                            <span id="card_title">
+                               Panle de control
+                            </span>
+
+                             <div class="float-right">
+                             <a href="{{ route('home.respaldo') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Respaldo') }}
+                                </a>
+                                <a href="{{ route('conductors.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Crear nuevo Registro') }}
+                                </a>
+                              </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <p>jahsh</p>
+                        <div id="piechart" style="width: auto; height: 500px;" class="col-sm-4 my-1"></div>
                     <div id="piechart2" style="width: auto; height: 500px;"  class="col-sm-4 my-1"></div>
                     <div id="barchart_material" style="width: auto; height: 500px;" class="col-sm-4 my-1"></div>
+                    </div>
                 </div>
+               <br>
             </div>
         </div>
-      @foreach($Consulta3 as $key => $value3):
-                <p>{{$value3->mes}}</p>
-                <p>{{$value3->cantidad}}</p>
-
-        @endforeach;
-        
+    </div>
 @endsection
         
 

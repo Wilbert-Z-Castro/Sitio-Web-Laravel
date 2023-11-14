@@ -11,11 +11,11 @@
                     <div class="form row">
                     <label for="">Busqueda por ID</label>
                         <div class="col-sm-4 my-1">
-                            
                             <input type="text" class="form-control" name="texto">
                         </div>
                         <div class="col-auto my-1">
                             <input type="submit" class="btn btn-primary" value="Buscar">
+                            <input type="submit" class="btn btn-primary" value="Reiniciar">
                         </div>
                     </div>
 
@@ -67,6 +67,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(count($conductors)<=0)
+                                        <tr>
+                                            <td colspan="8">No hay resultados</td>
+                                        </tr>
+                                    @else
+
                                     @foreach ($conductors as $conductor)
                                         <tr>
                                             <td>{{ ++$i }}</td>
@@ -90,6 +96,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

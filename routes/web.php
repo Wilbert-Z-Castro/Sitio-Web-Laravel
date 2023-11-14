@@ -29,6 +29,7 @@ Route::get('Usuarios/PDF',[App\Http\Controllers\BoletoController::class, 'pdf'])
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/RespaldoBD', [App\Http\Controllers\HomeController::class, 'respaldo'])->name('home.respaldo');
 
 Route::resource('conductors', App\Http\Controllers\ConductorController::class);
 Route::resource('autobus', App\Http\Controllers\AutobuController::class);
@@ -36,6 +37,7 @@ Route::resource('viajes', App\Http\Controllers\ViajeController::class);
 Route::resource('boletos', App\Http\Controllers\BoletoController::class);
 Route::resource('users',App\Http\Controllers\UserController::class);
 
+Route::get('/Respaldo',[RespaldoController::class,'index'])->name('respaldo.index');
 
 Route::get('/Reservaciones',[ReservacionesController::class,'index'])->name('reservaciones.index');
 Route::get('/Reservaciones.from',[ReservacionesController::class,'form'])->name('reservaciones.form');
