@@ -7,6 +7,7 @@ use App\Models\Conductor;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class AutobuController
@@ -19,9 +20,13 @@ class AutobuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $autobus = Autobu::paginate();
+        $texto=$request->get('texto');
+
+        $autobus = DB::table('autobus')->select('idAutobus','id_Conductor','Matricula','Modelo','Color','Capacidad')
+                        ->where('idAutobus','LIKE','%'.$texto.'%')
+                        ->orWhere('Matricula','LIKE','%'.$texto.'%')->paginate(5);
 
         return view('autobu.index', compact('autobus'))
             ->with('i', (request()->input('page', 1) - 1) * $autobus->perPage());

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Autobu;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\DB;
 /**
  * Class ViajeController
  * @package App\Http\Controllers
@@ -19,9 +19,14 @@ class ViajeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $viajes = Viaje::paginate();
+        $texto=$request->get('texto');
+
+        $viajes = DB::table('viaje')->select('idViaje','FechaViaje','Descripcion','Origen','Destino','Disponibles','id_autobus')
+                        ->where('idViaje','LIKE','%'.$texto.'%')
+                        ->orWhere('Origen','LIKE','%'.$texto.'%')
+                        ->orWhere('Destino','LIKE','%'.$texto.'%')->paginate(5);
 
         return view('viaje.index', compact('viajes'))
             ->with('i', (request()->input('page', 1) - 1) * $viajes->perPage());

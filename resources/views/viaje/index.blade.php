@@ -8,6 +8,23 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
+                <form action="{{route('viajes.index')}}" method="get">
+                    <div class="form row">
+                    <label for="">Busqueda por ID,origen o destino </label>
+                        <div class="col-sm-4 my-1">
+                            <input type="text" class="form-control" name="texto">
+                        </div>
+                        <div class="col-auto my-1">
+                            <input type="submit" class="btn btn-primary" value="Buscar">
+                            <input type="submit" class="btn btn-primary" value="Reiniciar">
+                        </div>
+                    </div>
+
+                </form>
+                <br>
+            </div>
+            <br>
+            <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -50,38 +67,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($viajes as $viaje)
+                                    @if(count($viajes)<=0)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $viaje->idViaje }}</td>
-											<td>{{ $viaje->FechaViaje }}</td>
-											<td>{{ $viaje->Descripcion }}</td>
-											<td>{{ $viaje->Origen }}</td>
-											<td>{{ $viaje->Destino }}</td>
-											<td>{{ $viaje->Disponibles }}</td>
-											<td>{{ $viaje->id_autobus }}</td>
-
-                                            <td>
-                                                <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('viajes.show',$viaje->idViaje) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
-                                                    <a class="btn btn-sm btn-success" href="{{ route('viajes.edit',$viaje->idViaje) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-                                                </form>
-                                            </td>
-                                            
+                                            <td colspan="11">No hay resultados</td>
                                         </tr>
-                                    @endforeach
+                                    @else
+                                        @foreach ($viajes as $viaje)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                
+                                                <td>{{ $viaje->idViaje }}</td>
+                                                <td>{{ $viaje->FechaViaje }}</td>
+                                                <td>{{ $viaje->Descripcion }}</td>
+                                                <td>{{ $viaje->Origen }}</td>
+                                                <td>{{ $viaje->Destino }}</td>
+                                                <td>{{ $viaje->Disponibles }}</td>
+                                                <td>{{ $viaje->id_autobus }}</td>
+
+                                                <td>
+                                                    <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
+                                                        <a class="btn btn-sm btn-primary " href="{{ route('viajes.show',$viaje->idViaje) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
+                                                        <a class="btn btn-sm btn-success" href="{{ route('viajes.edit',$viaje->idViaje) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST" class="eliminar-viajes-form" id="form-eliminar-{{ $viaje->idViaje }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    </form>
+                                                </td>
+                                                
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

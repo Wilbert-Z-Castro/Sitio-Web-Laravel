@@ -8,6 +8,23 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
+                <form action="{{route('autobus.index')}}" method="get">
+                    <div class="form row">
+                    <label for="">Busqueda por ID o matricula</label>
+                        <div class="col-sm-4 my-1">
+                            <input type="text" class="form-control" name="texto">
+                        </div>
+                        <div class="col-auto my-1">
+                            <input type="submit" class="btn btn-primary" value="Buscar">
+                            <input type="submit" class="btn btn-primary" value="Reiniciar">
+                        </div>
+                    </div>
+
+                </form>
+                <br>
+            </div>
+            <br>
+            <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -47,28 +64,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($autobus as $autobu)
+                                    @if(count($autobus)<=0)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $autobu->idAutobus }}</td>
-											<td>{{ $autobu->id_Conductor }}</td>
-											<td>{{ $autobu->Matricula }}</td>
-											<td>{{ $autobu->Modelo }}</td>
-											<td>{{ $autobu->Color }}</td>
-											<td>{{ $autobu->Capacidad }}</td>
-
-                                            <td>
-                                                <form action="{{ route('autobus.destroy',$autobu->idAutobus) }}" method="POST"  class="eliminar-autobus-form" id="form-eliminar-{{ $autobu->idAutobus }}">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('autobus.show',$autobu->idAutobus) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('autobus.edit',$autobu->idAutobus) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm eliminar-autobus"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-                                                </form>
-                                            </td>
+                                            <td colspan="8">No hay resultados</td>
                                         </tr>
-                                    @endforeach
+                                    @else
+                                        @foreach ($autobus as $autobu)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                
+                                                <td>{{ $autobu->idAutobus }}</td>
+                                                <td>{{ $autobu->id_Conductor }}</td>
+                                                <td>{{ $autobu->Matricula }}</td>
+                                                <td>{{ $autobu->Modelo }}</td>
+                                                <td>{{ $autobu->Color }}</td>
+                                                <td>{{ $autobu->Capacidad }}</td>
+
+                                                <td>
+                                                    <form action="{{ route('autobus.destroy',$autobu->idAutobus) }}" method="POST"  class="eliminar-autobus-form" id="form-eliminar-{{ $autobu->idAutobus }}">
+                                                        <a class="btn btn-sm btn-primary " href="{{ route('autobus.show',$autobu->idAutobus) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('autobus.edit',$autobu->idAutobus) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm eliminar-autobus"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif    
                                 </tbody>
                             </table>
                         </div>

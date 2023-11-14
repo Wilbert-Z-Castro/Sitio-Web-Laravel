@@ -54,7 +54,7 @@
 											<td>{{ $boleto->FechaBoleto }}</td>
 											<td>{{ $boleto->Cantidad }}</td>
 											<td>{{ $boleto->id_viaje }}</td>
-											<td>{{ $boleto->id_user }}</td>
+											<td>{{ $boleto->user->Nombre }}</td>
 
                                             <td>
                                                 <form action="{{ route('boletos.destroy',$boleto->idBoleto) }}" method="POST" class="eliminar-boletos-form" id="form-eliminar-{{ $boleto->idBoleto }}">
