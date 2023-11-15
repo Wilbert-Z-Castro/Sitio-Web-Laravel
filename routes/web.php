@@ -30,6 +30,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/RespaldoBD', [App\Http\Controllers\HomeController::class, 'respaldo'])->name('home.respaldo');
+Route::post('/RestauracionDB', [App\Http\Controllers\HomeController::class, 'restauracion'])->name('home.restauracion');
 
 Route::resource('conductors', App\Http\Controllers\ConductorController::class);
 Route::resource('autobus', App\Http\Controllers\AutobuController::class);

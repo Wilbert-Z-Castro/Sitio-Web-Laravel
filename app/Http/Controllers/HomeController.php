@@ -7,6 +7,7 @@ use App\Models\Viaje;
 use App\Models\Boleto;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -79,33 +80,37 @@ class HomeController extends Controller
 
 
     public function restauracion(Request $request)
-    {
-        if (!$request->hasFile('backup_file')) {
-            return redirect()->route('respaldo.index')
-                ->with('error', 'No se ha cargado ningún archivo. Por favor, seleccione un archivo para restaurar.');
-        }
-
-        $archivo = $request->file('backup_file')->getRealPath();
-
-        try {
-            // Verifica que el archivo no esté vacío
-            if (filesize($archivo) > 0) {
-                // Lee el contenido del archivo SQL
-                $sql = file_get_contents($archivo);
-
-                // Ejecuta el contenido del archivo SQL en la base de datos
-                DB::unprepared($sql);
-
-                return redirect()->route('respaldo.index')
-                ->with('success','La base de datos se ha restaurado correctamente.');
-            } else {
-                return redirect()->route('respaldo.index')
-                    ->with('error', 'El archivo SQL está vacío.');
-            }
-        } catch (Exception $e) {
-            dd($e->getMessage()); // Imprime el mensaje de error
-            return redirect()->route('respaldo.index')
-                ->with('error', 'Error al restaurar la base de datos: ' . $e->getMessage());
-        }
+{
+    if (!$request->hasFile('backup_file')) {
+        return redirect()->route('home')
+            ->with('error', 'No se ha cargado ningún archivo. Por favor, seleccione un archivo para restaurar.');
     }
+
+    $archivo = $request->file('backup_file')->getRealPath();
+
+    try {
+        // Verifica que el archivo no esté vacío
+        if (filesize($archivo) > 0) {
+            // Lee el contenido del archivo SQL
+            $sql = file_get_contents($archivo);
+            $databaseHost = env('DB_HOST');
+            $databaseUsername = env('DB_USERNAME');
+            $databaseName = env('DB_DATABASE');
+            // Ejecuta el contenido del archivo SQL en la base de datos
+            exec("mysql -h $databaseHost -u $databaseUsername -p $databaseName < $archivo");
+
+            return redirect()->route('home')
+                ->with('success','La base de datos se ha restaurado correctamente.');
+        } else {
+            return redirect()->route('home')
+                ->with('error', 'El archivo SQL está vacío.');
+        }
+    } catch (Exception $e) {
+        dd($e->getMessage()); // Imprime el mensaje de error
+        return redirect()->route('home')
+            ->with('error', 'Error al restaurar la base de datos: ' . $e->getMessage());
+    }
+}
+
+
 }

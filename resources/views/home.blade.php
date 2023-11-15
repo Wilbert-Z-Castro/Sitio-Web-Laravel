@@ -27,7 +27,7 @@
             ]);
 
             var options = {
-            title: 'Genero de los empleados'
+            title: 'Género de los empleados'
             };
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
@@ -41,7 +41,7 @@
         function drawChart() {
 
             var data = google.visualization.arrayToDataTable([
-            ['Task', 'Genero de los empleados'],
+            ['Task', 'Género de los empleados'],
             <?php
             foreach($Consulta2 as $key => $value2):
                 echo "['ID:". $value2->id_viaje." ". $value2->Origen."-". $value2->Destino."', " .$value2->cantidad."],";
@@ -50,7 +50,7 @@
             ]);
 
             var options = {
-            title: 'My Daily Activities'
+            title: 'Viajes realizados (Destino - origen)'
             };
             var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
 
@@ -125,7 +125,7 @@
             title: 'Cantidad de viajes realizados al mes',
             subtitle: '2023-2024',
           },
-          bars: 'horizontal' // Required for Material Bar Charts.
+          bars: 'vertical' // Required for Material Bar Charts.
         };
 
         var chart = new google.charts.Bar(document.getElementById('barchart_material'));
@@ -141,25 +141,53 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                               Panle de control
+                               panel de control
                             </span>
 
                              <div class="float-right">
                              <a href="{{ route('home.respaldo') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Respaldo') }}
                                 </a>
-                                <a href="{{ route('conductors.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear nuevo Registro') }}
-                                </a>
+                                
                               </div>
                         </div>
                     </div>
 
                     <div class="card-body">
                         <p>jahsh</p>
-                        <div id="piechart" style="width: auto; height: 500px;" class="col-sm-4 my-1"></div>
-                    <div id="piechart2" style="width: auto; height: 500px;"  class="col-sm-4 my-1"></div>
-                    <div id="barchart_material" style="width: auto; height: 500px;" class="col-sm-4 my-1"></div>
+                        <div id="piechart" style="width: auto; height: 450px;" class="col-sm-4 my-1"></div>
+                        <div id="piechart2" style="width: auto; height: 450px;"  class="col-sm-4 my-1"></div>
+                        <div id="barchart_material" style="width: auto; height: 450px;" class="col-sm-4 my-1"></div>
+                        <div class="mb-3">
+                          <h1>Respaldo</h1>
+                          <a href="{{ route('home.respaldo') }}" class="btn btn-primary btn-lg float-right"  data-placement="left">
+                                  {{ __('Respaldo') }}
+                                </a>
+                          <h1>Restauración de la base de datos</h1>
+                          <h3>Restaurar Base de datos</h3>
+                          
+                          @if ($message = Session::get('success'))
+                              <div class="alert alert-success">
+                                  <p>{{ $message }}</p>
+                              </div>
+                          @endif
+
+                          @if($errors->any())
+                          <div class="alert alert-danger">
+                              <ul>
+                                  @foreach($errors->all() as $error)
+                                      <li>{{ $error }}</li>
+                                  @endforeach
+                              </ul>
+                          </div>
+                          @endif
+                          <form action="{{ route('home.restauracion') }}" method="POST" enctype="multipart/form-data">
+                          @csrf
+                          <input type="file" name="backup_file" accept=".sql">
+                          <button type="submit" class="btn btn-success btn-sm">Restaurar</button>
+                          </form>
+                          
+                        </div>
                     </div>
                 </div>
                <br>

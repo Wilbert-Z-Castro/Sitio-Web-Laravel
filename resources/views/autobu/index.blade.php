@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <form action="{{route('autobus.index')}}" method="get">
                     <div class="form row">
-                    <label for="">Busqueda por ID o matricula</label>
+                    <label for="">Búsqueda por ID o matricula</label>
                         <div class="col-sm-4 my-1">
                             <input type="text" class="form-control" name="texto">
                         </div>

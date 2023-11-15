@@ -17,7 +17,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('menubase', 'Laravel') }}</title>
+    <title>{{ config('menubase', 'Upemor') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -59,17 +59,27 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </form>
     
 
-    @if ( Auth::user()->Nombre === 'juan'  )
-      
+    @if ( Auth::user()->Rol === 'Administrador' || Auth::user()->Rol === 'administrador'  )
+      <a href="{{ route('home') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pie-chart fa-fw"></i> Estadisticos</a>
+      <a href="{{ route('autobus.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bus fa-fw"></i> Gestión  de Autobuces</a>
+      <a href="{{ route('conductors.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-id-card fa-fw"></i>{{ __(' Gestión de Conductores') }}</a>
+      <a href="{{ route('viajes.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plane fa-fw"></i> Gestión de Viajes</a>
+      <a href="{{ route('boletos.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i > Gestión de Boletos</a>
+      <a href="{{ route('users.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user-circle-o fa-fw"></i> Gestión de Usuarios</a>
+      <a href="{{ route('reservaciones.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar fa-fw"></i> Hacer Reservaciones</a>
+      <a href="{{ route('reservaciones.mostrar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar-check-o fa-fw"></i> Mis reservaciones</a>
     @endif
-    <a href="{{ route('home') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pie-chart fa-fw"></i> Estadisticos</a>
-    <a href="{{ route('autobus.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bus fa-fw"></i> Gestión  de Autobuces</a>
-    <a href="{{ route('conductors.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-id-card fa-fw"></i>{{ __(' Gestión de Conductores') }}</a>
-    <a href="{{ route('viajes.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plane fa-fw"></i> Gestión de Viajes</a>
-    <a href="{{ route('boletos.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i > Gestión de Boletos</a>
-    <a href="{{ route('users.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user-circle-o fa-fw"></i> Gestión de Usuarios</a>
-    <a href="{{ route('reservaciones.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar fa-fw"></i> Hacer Reservaciones</a>
-    <a href="{{ route('reservaciones.mostrar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar-check-o fa-fw"></i> Mis reservaciones</a>
+    @if ( Auth::user()->Rol === 'Estudiante'  )
+      <a href="{{ route('home') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pie-chart fa-fw"></i> Estadisticos</a>
+      <a href="{{ route('autobus.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bus fa-fw"></i> Gestión  de Autobuces</a>
+      <a href="{{ route('conductors.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-id-card fa-fw"></i>{{ __(' Gestión de Conductores') }}</a>
+      <a href="{{ route('viajes.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plane fa-fw"></i> Gestión de Viajes</a>
+      <a href="{{ route('boletos.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i > Gestión de Boletos</a>
+      <a href="{{ route('users.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user-circle-o fa-fw"></i> Gestión de Usuarios</a>
+      <a href="{{ route('reservaciones.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar fa-fw"></i> Hacer Reservaciones</a>
+      <a href="{{ route('reservaciones.mostrar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar-check-o fa-fw"></i> Mis reservaciones</a>
+    @endif
+    
 
     <!-- 
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>

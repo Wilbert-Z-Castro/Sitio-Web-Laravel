@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <form action="{{route('viajes.index')}}" method="get">
                     <div class="form row">
-                    <label for="">Busqueda por ID,origen o destino </label>
+                    <label for="">Búsqueda por ID,origen o destino </label>
                         <div class="col-sm-4 my-1">
                             <input type="text" class="form-control" name="texto">
                         </div>

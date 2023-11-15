@@ -95,6 +95,7 @@ class BoletoController extends Controller
         $boleto->id_user = $user->id;
 
         // Guarda el boleto
+        $boleto->FechaBoleto=date('Y-m-d');
         $boleto->save();
         return redirect()->route('reservaciones.index')
             ->with('success', 'Boleto created successfully.');

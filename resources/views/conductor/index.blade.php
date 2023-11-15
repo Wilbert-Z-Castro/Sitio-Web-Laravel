@@ -9,7 +9,7 @@
             <div class="col-sm-12">
                 <form action="{{route('conductors.index')}}" method="get">
                     <div class="form row">
-                    <label for="">Busqueda por ID</label>
+                    <label for="">Búsqueda por ID</label>
                         <div class="col-sm-4 my-1">
                             <input type="text" class="form-control" name="texto">
                         </div>
