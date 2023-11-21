@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class=" table table-striped">
+                            <table class="table table-hover">
                                 <thead class="thead-dark">
                                     <tr>
 										<th>Idconductor</th>

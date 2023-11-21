@@ -11,10 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Boleto</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('boletos.index') }}"> {{ __('Back') }}</a>
+                            <span class="card-title">{{ __('Datos del ') }} Boleto</span>
                         </div>
                     </div>
 

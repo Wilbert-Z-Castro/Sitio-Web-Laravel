@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('menubase.app')
 
 @section('template_title')
     {{ __('Update') }} Boleto

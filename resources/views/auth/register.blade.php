@@ -76,23 +76,11 @@
                             </div>
                         </div>
                         <!-- para el Rol -->
-                        <div class="row mb-3">
-                            <label for="Rol" class="col-md-4 col-form-label text-md-end">{{ __('Rol') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="Rol" type="text" class="form-control @error('Rol') is-invalid @enderror" name="Rol" value="{{ old('Rol') }}" >
-
-                                @error('Rol')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                        
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrar') }}
                                 </button>
                             </div>
                         </div>

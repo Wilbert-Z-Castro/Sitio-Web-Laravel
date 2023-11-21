@@ -8,8 +8,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+a{
+  text-decoration: none;
+}
 </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,8 +21,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('menubase', 'Upemor') }}</title>
-
+    <title>   {{ config('menubase', 'Upemor') }} </title>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -52,8 +56,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="{{ route('logout') }}" class="w3-bar-item w3-button w3-padding w3-blue"
-    onclick="event.preventDefault();
-    document.getElementById('logout-form').submit();"><i class="fa fa-users fa-fw"></i>  Logoud</a>
+        onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();"><i class="fa fa-users fa-fw">
+
+    </i>  {{ __('Logout') }}</a>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
         @csrf
     </form>
@@ -61,7 +67,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
     @if ( Auth::user()->Rol === 'Administrador' || Auth::user()->Rol === 'administrador'  )
       <a href="{{ route('home') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pie-chart fa-fw"></i> Estadisticos</a>
-      <a href="{{ route('autobus.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bus fa-fw"></i> Gestión  de Autobuces</a>
+      <a href="{{ route('autobus.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bus fa-fw"></i> Gestión  de Autobuses</a>
       <a href="{{ route('conductors.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-id-card fa-fw"></i>{{ __(' Gestión de Conductores') }}</a>
       <a href="{{ route('viajes.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plane fa-fw"></i> Gestión de Viajes</a>
       <a href="{{ route('boletos.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i > Gestión de Boletos</a>
@@ -69,17 +75,16 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <a href="{{ route('reservaciones.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar fa-fw"></i> Hacer Reservaciones</a>
       <a href="{{ route('reservaciones.mostrar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar-check-o fa-fw"></i> Mis reservaciones</a>
     @endif
-    @if ( Auth::user()->Rol === 'Estudiante'  )
-      <a href="{{ route('home') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pie-chart fa-fw"></i> Estadisticos</a>
-      <a href="{{ route('autobus.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bus fa-fw"></i> Gestión  de Autobuces</a>
-      <a href="{{ route('conductors.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-id-card fa-fw"></i>{{ __(' Gestión de Conductores') }}</a>
-      <a href="{{ route('viajes.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plane fa-fw"></i> Gestión de Viajes</a>
-      <a href="{{ route('boletos.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i > Gestión de Boletos</a>
-      <a href="{{ route('users.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user-circle-o fa-fw"></i> Gestión de Usuarios</a>
+    @if ( Auth::user()->Rol === 'Alumno'  )
       <a href="{{ route('reservaciones.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar fa-fw"></i> Hacer Reservaciones</a>
       <a href="{{ route('reservaciones.mostrar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar-check-o fa-fw"></i> Mis reservaciones</a>
     @endif
-    
+    @if ( Auth::user()->Rol === 'Supervisor'  )
+      <a href="{{ route('viajes.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plane fa-fw"></i> Gestión de Viajes</a>
+      <a href="{{ route('boletos.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i > Gestión de Boletos</a>
+      <a href="{{ route('reservaciones.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar fa-fw"></i> Hacer Reservaciones</a>
+      <a href="{{ route('reservaciones.mostrar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar-check-o fa-fw"></i> Mis reservaciones</a>
+    @endif
 
     <!-- 
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>

@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Boleto;
 class ReservacionesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function index()
     {
         $viajes = Viaje::paginate();

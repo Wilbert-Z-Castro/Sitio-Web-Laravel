@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Autobu extends Model
 {
+    protected $table = "autobus";
     protected $primaryKey = 'idAutobus';
     static $rules = [
 		'idAutobus' => 'required',

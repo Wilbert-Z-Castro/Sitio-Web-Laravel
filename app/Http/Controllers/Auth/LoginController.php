@@ -56,10 +56,12 @@ class LoginController extends Controller
     public function authenticated($request , $user){
         if($user->Rol=='administrador' || $user->Rol=='Administrador'){
             return redirect()->route('admin.dashboard') ;
-        }else{
+        }elseif($user->Rol=='Supervisor'){
             return redirect()->route('supervisor.dashboard') ;
+        }else{
+            return redirect()->route('alumno.dashboard'); 
         }
-        return redirect()->route('alumno.dashboard'); 
+        
 
     }
 }

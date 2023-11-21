@@ -51,13 +51,13 @@
 											<td>{{ $boleto->idBoleto }}</td>
 											<td>{{ $boleto->FechaBoleto }}</td>
 											<td>{{ $boleto->Cantidad }}</td>
-											<td>{{ $boleto->id_viaje }}</td>
-											<td>{{ $boleto->id_user }}</td>
+											<td>{{ $boleto->viaje->Origen }} - {{ $boleto->viaje->Destino }}</td>
+											<td>{{ $boleto->user->Nombre }}</td>
 
                                             <td>
                                                 <form action="{{ route('boletos.destroy',$boleto->idBoleto) }}" method="POST" class="eliminar-boletos-form" id="form-eliminar-{{ $boleto->idBoleto }}">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('boletos.show',$boleto->idBoleto) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('boletos.edit',$boleto->idBoleto) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('boletos.show',$boleto->idBoleto) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('boletos.edit',$boleto->idBoleto) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     

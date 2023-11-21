@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'Apellido' => $data['Apellido'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'Rol' => $data['Rol'],
+            'Rol' => 'Alumno',
         ]);
     }
     public function redirectPath()
@@ -85,6 +85,9 @@ class RegisterController extends Controller
             return view('home');
         }elseif((auth()->user()->Rol=='Supervisor')){
             return view('viajes.index');
+        }
+        if((auth()->user()->Rol=='Alumno')){
+            return view('reservaciones.index');
         }
 
         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';

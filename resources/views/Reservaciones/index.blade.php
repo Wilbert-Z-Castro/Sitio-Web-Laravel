@@ -63,7 +63,7 @@
 
                                             <td>
                                                 <form action="{{ route('viajes.destroy',$viaje->idViaje) }}" method="POST"> 
-                                                <a class="btn btn-sm btn-primary " href="{{ route('reservaciones.create', ['idViaje' => $viaje->idViaje, 'Disponibles' => $viaje->Disponibles,'FechaViaje'=>$viaje->FechaViaje]) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Hacer Reservacion') }}</a>                                                    
+                                                <a class="btn btn-sm btn-primary " href="{{ route('reservaciones.create', ['idViaje' => $viaje->idViaje, 'Disponibles' => $viaje->Disponibles,'FechaViaje'=>$viaje->FechaViaje]) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Hacer Reservación') }}</a>                                                    
                                                 </form>
                                             </td>
                                         </tr>

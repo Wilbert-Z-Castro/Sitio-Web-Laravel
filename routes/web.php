@@ -22,6 +22,9 @@ use App\Models\User;
 Route::get('/', function () {
     return view('auth.login');
 });
+
+
+
 Route::get('Conductores/PDF',[App\Http\Controllers\ConductorController::class, 'pdf'])->name('conductores.pdf');
 Route::get('Boletos/PDF',[App\Http\Controllers\BoletoController::class, 'pdf'])->name('Boletos.pdf');
 Route::get('Usuarios/PDF',[App\Http\Controllers\BoletoController::class, 'pdf'])->name('Usuarios.pdf');
@@ -73,6 +76,7 @@ Route::get('/dashboard', function (){
 Route::get('/dashboard-Viajes', function (){
     $viajes = Viaje::paginate();
     return view('reservaciones.index', compact('viajes'))
-    ->with('i', (request()->input('page', 1) - 1) * $viajes->perPage());
+        ->with('i', (request()->input('page', 1) - 1) * $viajes->perPage());
+
 })->name('alumno.dashboard'); 
 

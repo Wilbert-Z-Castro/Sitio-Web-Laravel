@@ -56,7 +56,7 @@ class HomeController extends Controller
             $databaseHost = env('DB_HOST');
             $databaseUsername = env('DB_USERNAME');
             $databaseName = env('DB_DATABASE');
-
+            
             // Construir el comando mysqldump
             $comando = "C:/xampp/mysql/bin/mysqldump -h $databaseHost -u $databaseUsername $databaseName > $archivoTemporal";
             shell_exec($comando);
@@ -97,7 +97,7 @@ class HomeController extends Controller
             $databaseUsername = env('DB_USERNAME');
             $databaseName = env('DB_DATABASE');
             // Ejecuta el contenido del archivo SQL en la base de datos
-            exec("mysql -h $databaseHost -u $databaseUsername -p $databaseName < $archivo");
+            exec("C:/xampp/mysql/bin/mysqldump -u $databaseUsername -p $databaseName < $archivo");
 
             return redirect()->route('home')
                 ->with('success','La base de datos se ha restaurado correctamente.');

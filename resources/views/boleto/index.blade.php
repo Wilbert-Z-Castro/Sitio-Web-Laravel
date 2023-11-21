@@ -31,8 +31,8 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-dark">
-                                <thead class="thead">
+                            <table class="table table-hover">
+                                <thead class="thead-light">
                                     <tr>
                                         <th>No</th>
                                         

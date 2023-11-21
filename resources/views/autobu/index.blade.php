@@ -30,7 +30,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Gestión de autobuces') }}
+                                {{ __('Gestión de autobuses') }}
                             </span>
 
                              <div class="float-right">
@@ -48,8 +48,8 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-dark">
-                                <thead class="thead">
+                            <table class="table table-hover">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th>No</th>
                                         

@@ -155,9 +155,9 @@
 
                     <div class="card-body">
                         <p>jahsh</p>
-                        <div id="piechart" style="width: auto; height: 450px;" class="col-sm-4 my-1"></div>
-                        <div id="piechart2" style="width: auto; height: 450px;"  class="col-sm-4 my-1"></div>
-                        <div id="barchart_material" style="width: auto; height: 450px;" class="col-sm-4 my-1"></div>
+                        <div id="piechart" style="width: auto; height: 450px;" ></div>
+                        <div id="piechart2" style="width: auto; height: 450px;"  ></div>
+                        <div id="barchart_material" style="width: auto; height: 450px;" ></div>
                         <div class="mb-3">
                           <h1>Respaldo</h1>
                           <a href="{{ route('home.respaldo') }}" class="btn btn-primary btn-lg float-right"  data-placement="left">
