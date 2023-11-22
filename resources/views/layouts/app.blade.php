@@ -15,7 +15,19 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+
 </head>
+<style>
+    body{
+        /* Fondo degradado de naranja a morado */
+        background-image: url('/img/fondo2.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+
+    }
+</style>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -84,6 +96,11 @@
             </div>
         </nav>
 
+        <center>
+            <div class="div-con-imagen">
+                <img src="/img/escudo.jfif" alt="Logo del sistema">
+            </div>
+        </center>
         <main class="py-4">
             @yield('content')
         </main>

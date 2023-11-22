@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Boleto;
+use App\Models\User;
 use App\Models\Viaje;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,11 +25,14 @@ class BoletoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $boletos = Boleto::paginate(7);
-
-        return view('boleto.index', compact('boletos'))
+        $texto=$request->get('texto');
+        $user =User::get();
+        $boletos = DB::table('boleto')->select('idBoleto','FechaBoleto','Cantidad','id_viaje','id_user')
+                        ->where('idBoleto','LIKE','%'.$texto.'%')->paginate(5);
+        return view('boleto.index', compact('boletos','user'))
             ->with('i', (request()->input('page', 1) - 1) * $boletos->perPage());
     }
 

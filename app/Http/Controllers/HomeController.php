@@ -39,7 +39,7 @@ class HomeController extends Controller
                         ->orderBy('id_viaje','desc')
                         ->take(5)
                         ->get();
-        $Consulta3 = Viaje::selectRaw('count(*) as cantidad,MONTH(FechaViaje) as mes')
+        $Consulta3 = Boleto::selectRaw('count(*) as cantidad,MONTH(FechaBoleto) as mes')
         ->groupBy('mes')
         ->get();
         return view('home',compact('Consulta1','Consulta2','Consulta3'));
@@ -97,7 +97,7 @@ class HomeController extends Controller
             $databaseUsername = env('DB_USERNAME');
             $databaseName = env('DB_DATABASE');
             // Ejecuta el contenido del archivo SQL en la base de datos
-            exec("C:/xampp/mysql/bin/mysqldump -u $databaseUsername -p $databaseName < $archivo");
+            shell_exec("C:/xampp/mysql/bin/mysqldump -u $databaseUsername -p $databaseName < $archivo");
 
             return redirect()->route('home')
                 ->with('success','La base de datos se ha restaurado correctamente.');

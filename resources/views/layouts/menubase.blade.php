@@ -29,8 +29,11 @@ a{
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
+
 <body class="w3-light-grey">
+  
 
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
@@ -99,6 +102,7 @@ a{
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
     -->
   </div>
+  <p>Design by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">Zeta</a></p>
 </nav>
 
 
@@ -327,10 +331,7 @@ a{
   </div>
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-16 w3-light-grey">
-    <h4>FOOTER</h4>
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-  </footer>
+  
 
   <!-- End page content -->
 </div>
@@ -362,4 +363,8 @@ function w3_close() {
 </script>
 @yield('js')
 </body>
+<footer class="w3-container w3-padding-16 w3-light-grey">
+    <h4>FOOTER</h4>
+    <p>Design by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">Zeta</a></p>
+  </footer>
 </html>

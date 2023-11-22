@@ -1,0 +1,14 @@
+.div-con-imagen {
+    width: 200px; /* Ajusta el ancho según tus necesidades */
+    height: 200px; /* Ajusta la altura según tus necesidades */
+    overflow: hidden;
+    border-radius: 50%; /* Hace que el contenedor tenga bordes redondos */
+    border: 2px solid white; /* Borde blanco delgado */
+  }
+  
+  /* Estilos para la imagen dentro del div */
+  .div-con-imagen img {
+    width: 100%; /* Ajusta el ancho para que la imagen cubra todo el contenedor */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    border-radius: 50%; /* Hace que la imagen tenga bordes redondos */
+  }

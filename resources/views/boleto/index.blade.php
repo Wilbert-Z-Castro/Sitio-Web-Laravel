@@ -8,6 +8,23 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
+                <form action="{{route('boletos.index')}}" method="get">
+                    <div class="form row">
+                    <label for="">Búsqueda por ID </label>
+                        <div class="col-sm-4 my-1">
+                            <input type="text" class="form-control" name="texto">
+                        </div>
+                        <div class="col-auto my-1">
+                            <input type="submit" class="btn btn-primary" value="Buscar">
+                            <input type="submit" class="btn btn-primary" value="Reiniciar">
+                        </div>
+                    </div>
+
+                </form>
+                <br>
+            </div>
+            <br>
+            <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -31,8 +48,8 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead class="thead-light">
+                        <table class="table table-hover">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th>No</th>
                                         
@@ -54,8 +71,11 @@
 											<td>{{ $boleto->FechaBoleto }}</td>
 											<td>{{ $boleto->Cantidad }}</td>
 											<td>{{ $boleto->id_viaje }}</td>
-											<td>{{ $boleto->user->Nombre }}</td>
-
+                                            @foreach($user as $use)
+                                            @if($use->id == $boleto->id_user)
+											<td>{{ $use->Nombre }}</td>
+                                            @endif
+                                            @endforeach
                                             <td>
                                                 <form action="{{ route('boletos.destroy',$boleto->idBoleto) }}" method="POST" class="eliminar-boletos-form" id="form-eliminar-{{ $boleto->idBoleto }}">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('boletos.show',$boleto->idBoleto) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
@@ -83,9 +103,9 @@
 @if(session('success')=='Boleto deleted successfully')
     <script>
         Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
+            'Eliminado!',
+            'Su registro ha sido eliminado.',
+            'Exitosamente '
             )
     </script>
 @endif
@@ -101,13 +121,13 @@
                 const conductorId = this.getAttribute('id').replace('form-eliminar-', '');
 
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: '¿Desea continuar ?',
+                    text: "¿Seguro que quieres eliminar el registro?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Si, Eliminarlo!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Si se confirma la eliminación, envía el formulario

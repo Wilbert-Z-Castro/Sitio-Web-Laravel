@@ -160,7 +160,7 @@
                         <div id="barchart_material" style="width: auto; height: 450px;" ></div>
                         <div class="mb-3">
                           <h1>Respaldo</h1>
-                          <a href="{{ route('home.respaldo') }}" class="btn btn-primary btn-lg float-right"  data-placement="left">
+                          <a href="{{ route('home.respaldo') }}" class="btn btn-primary btn-lg "  data-placement="left">
                                   {{ __('Respaldo') }}
                                 </a>
                           <h1>Restauración de la base de datos</h1>

@@ -110,7 +110,7 @@ class ConductorController extends Controller
         $conductor = Conductor::create($request->all());
 
         return redirect()->route('conductors.index')
-            ->with('success', 'Conductor created successfully.');
+            ->with('success', 'Registro de conductor creado correctamente.');
     }
 
     /**

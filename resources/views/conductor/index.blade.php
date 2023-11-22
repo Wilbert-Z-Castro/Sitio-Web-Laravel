@@ -33,12 +33,14 @@
                             </span>
 
                              <div class="float-right">
-                             <a href="{{ route('conductores.pdf') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                             <a href="{{ route('conductores.pdf') }}" class="btn btn-primary btn-sm "  data-placement="left" >
                                   {{ __('Reporte PDF') }}
                                 </a>
-                                <a href="{{ route('conductors.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                            
+                                <a href="{{ route('conductors.create') }}" class="btn btn-primary btn-sm "  data-placement="left">
                                   {{ __('Crear nuevo Registro') }}
                                 </a>
+                                
                               </div>
                         </div>
                     </div>
@@ -51,7 +53,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                         <table class="table table-hover">
-                                <thead class="thead-light">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th>No</th>
                                         
@@ -60,7 +62,7 @@
 										<th>Apellido</th>
 										<th>Fecha de ingreso</th>
 										<th>Fecha Nacimiento</th>
-										<th>Genero</th>
+										<th>Género</th>
 										<th>Telefono</th>
 
                                         <th></th>

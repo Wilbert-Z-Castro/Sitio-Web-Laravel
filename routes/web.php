@@ -59,7 +59,7 @@ Route::get('/dashboard-admin', function (){
                         ->orderBy('id_viaje','desc')
                         ->take(5)
                         ->get();                
-        $Consulta3 = Viaje::selectRaw('count(*) as cantidad,MONTH(FechaViaje) as mes')
+        $Consulta3 = Boleto::selectRaw('count(*) as cantidad,MONTH(FechaBoleto) as mes')
                         ->groupBy('mes')
                         ->get();
         
