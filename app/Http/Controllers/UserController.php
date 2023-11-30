@@ -49,6 +49,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        //reglas minimas que debe segir el formualrios
         $rules = [
             'Nombre' => 'required',
             'Apellido' => 'required',
@@ -56,11 +57,13 @@ class UserController extends Controller
             'password' => 'required',
             'Rol' => 'required',
         ];
+        //mensaje persolaizados para cada posible error.
         $validator = Validator::make($request->all(), $rules);
         $validator->setCustomMessages([
             'required' => 'El campo :attribute es obligatorio.', 
             'unique'=> 'El valor :attribute ya existe.',
         ]);
+        //Asignacion de nombre a los campos para el usuario
         $validator->setAttributeNames([
             'ApeConductor' => 'Apellido',
             'NomConductor' => 'Nombre',
@@ -72,9 +75,9 @@ class UserController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         $user = User::create($request->all());
-
+        //Redireccionamiento y mensaje a mostrar.
         return redirect()->route('users.index')
-            ->with('success', 'User created successfully.');
+            ->with('success', 'Usuario creado correctamente.');
     }
 
     public function show($id)
@@ -112,7 +115,7 @@ class UserController extends Controller
         $user->update($request->all());
 
         return redirect()->route('users.index')
-            ->with('success', 'User updated successfully');
+            ->with('success', 'Usuario actualizado correctamente');
     }
 
     public function destroy($id)

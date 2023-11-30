@@ -115,12 +115,12 @@
 @endsection 
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@if(session('success')=='Conductor deleted successfully')
+@if(session('success')=='Conductor eliminado exitosamente')
     <script>
         Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
+            'Eliminado!',
+            'Su registro ha sido eliminado.',
+            'Exitosamente '
             )
     </script>
 @endif
@@ -136,13 +136,13 @@
                 const conductorId = this.getAttribute('id').replace('form-eliminar-', '');
 
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: '¿Desea continuar ?',
+                    text: "¿Seguro que quieres eliminar el registro?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Si, Eliminarlo!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Si se confirma la eliminación, envía el formulario

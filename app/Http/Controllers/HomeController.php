@@ -8,6 +8,8 @@ use App\Models\Boleto;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Response;
 
 class HomeController extends Controller
 {

@@ -90,6 +90,7 @@ class ConductorController extends Controller
             'required' => 'El campo :attribute es obligatorio.', 
             'unique'=> 'El valor :attribute ya existe.',
             'numeric'=>'El valor debe de ser numerico mayor de 0',
+            'idConductor.min'=>'El ID debe de ser mayor a 1',
             'min'=>'El telefono debe de tener al menos 8 caracteres',
             'before'=>'Debe de ser mayor de edad',
             //'FechaNa.min' => 'La fecha de nacimiento debe ser al menos 18 años antes de la fecha actual.',
@@ -150,11 +151,39 @@ class ConductorController extends Controller
     public function update(Request $request, Conductor $conductor)
     {
 
-        request()->validate(Conductor::$rules);
+        $fehcamin=Carbon::now()->subYears(18)->timestamp;
+        $rules = [
+            'idConductor' => 'required|numeric|min:1',
+            'NomConductor' => 'required',
+            'ApeConductor' => 'required',
+            'FechaNa' => 'required|date|before:now-18Years',
+            'Genero' => 'required',
+            'Telefono' => 'required|numeric|min:8',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        $validator->setCustomMessages([
+            'required' => 'El campo :attribute es obligatorio.', 
+            'unique'=> 'El valor :attribute ya existe.',
+            'numeric'=>'El valor debe de ser numerico mayor de 0',
+            'min'=>'El telefono debe de tener al menos 8 caracteres',
+            'before'=>'Debe de ser mayor de edad',
+            //'FechaNa.min' => 'La fecha de nacimiento debe ser al menos 18 años antes de la fecha actual.',
+            
+        ]);
+        $validator->setAttributeNames([
+            'ApeConductor' => 'Apellido',
+            'NomConductor' => 'Nombre',
+            'FechaNa' => 'Fecha de nacimiento',
+            
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         $conductor->update($request->all());
 
         return redirect()->route('conductors.index')
-            ->with('success', 'Conductor updated successfully');
+            ->with('success', 'Registro de conductor actualizado correctamente');
     }
 
     /**
@@ -167,6 +196,6 @@ class ConductorController extends Controller
         $conductor = Conductor::find($id)->delete();
 
         return redirect()->route('conductors.index')
-            ->with('success', 'Conductor deleted successfully');
+            ->with('success', 'Conductor eliminado exitosamente');
     }
 }

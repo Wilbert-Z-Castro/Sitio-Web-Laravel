@@ -7,6 +7,7 @@ use App\Models\Conductor;
 use App\Models\Autobu;
 use App\Models\Boleto;
 use App\Models\User;
+use App\Http\Controllers\BackupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::get('Usuarios/PDF',[App\Http\Controllers\BoletoController::class, 'pdf'])
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home2', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('/RespaldoBD', [App\Http\Controllers\HomeController::class, 'respaldo'])->name('home.respaldo');
 Route::post('/RestauracionDB', [App\Http\Controllers\HomeController::class, 'restauracion'])->name('home.restauracion');
 
@@ -40,6 +42,11 @@ Route::resource('autobus', App\Http\Controllers\AutobuController::class);
 Route::resource('viajes', App\Http\Controllers\ViajeController::class);
 Route::resource('boletos', App\Http\Controllers\BoletoController::class);
 Route::resource('users',App\Http\Controllers\UserController::class);
+
+
+
+Route::get('/backup-and-download', [BackupController::class, 'backupAndDownload']);
+
 
 Route::get('/Respaldo',[RespaldoController::class,'index'])->name('respaldo.index');
 

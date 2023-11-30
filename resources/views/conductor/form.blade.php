@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Apellido') }}
-            {{ Form::text('ApeConductor', $conductor->ApeConductor, ['class' => 'form-control' . ($errors->has('ApeConductor') ? ' is-invalid' : ''), 'placeholder' => 'Apeconductor']) }}
+            {{ Form::text('ApeConductor', $conductor->ApeConductor, ['class' => 'form-control' . ($errors->has('ApeConductor') ? ' is-invalid' : ''), 'placeholder' => 'Apellido']) }}
             {!! $errors->first('ApeConductor', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

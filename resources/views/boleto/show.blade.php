@@ -34,8 +34,13 @@
                             {{ $boleto->id_viaje }}
                         </div>
                         <div class="form-group">
-                            <strong>Id User:</strong>
+                            <strong>Id User/Nombre:</strong>
                             {{ $boleto->id_user }}
+                            @foreach($user as $use)
+                            @if($use->id == $boleto->id_user)
+							{{ $use->Nombre }}
+                            @endif
+                            @endforeach
                         </div>
 
                     </div>

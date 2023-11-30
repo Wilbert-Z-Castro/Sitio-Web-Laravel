@@ -145,26 +145,39 @@
                             </span>
 
                              <div class="float-right">
-                             <a href="{{ route('home.respaldo') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Respaldo') }}
-                                </a>
+                             
+                                
+                            
                                 
                               </div>
                         </div>
                     </div>
+                    
 
                     <div class="card-body">
-                        <p>jahsh</p>
-                        <div id="piechart" style="width: auto; height: 450px;" ></div>
-                        <div id="piechart2" style="width: auto; height: 450px;"  ></div>
-                        <div id="barchart_material" style="width: auto; height: 450px;" ></div>
-                        <div class="mb-3">
+                        <a href="{{ route('conductores.pdf') }}" class="btn btn-primary btn-lg "  data-placement="left" >
+                                  {{ __('Reporte PDF conductores') }}
+                        </a>
+                        <a href="{{ route('Boletos.pdf') }}" class="btn btn-primary btn-lg"  data-placement="left">
+                                  {{ __('Reporte PDF de Boletos') }}
+                                </a>
+                                <div class="mb-3">
+                                <hr>
                           <h1>Respaldo</h1>
+                          @if($errors->any())
+                          <div class="alert alert-danger">
+                              <ul>
+                                  @foreach($errors->all() as $error)
+                                      <li>{{ $error }}</li>
+                                  @endforeach
+                              </ul>
+                          </div>
+                          @endif
+                          
                           <a href="{{ route('home.respaldo') }}" class="btn btn-primary btn-lg "  data-placement="left">
                                   {{ __('Respaldo') }}
                                 </a>
-                          <h1>Restauración de la base de datos</h1>
-                          <h3>Restaurar Base de datos</h3>
+                            <h3>Restaurar Base de datos</h3>
                           
                           @if ($message = Session::get('success'))
                               <div class="alert alert-success">
@@ -188,6 +201,11 @@
                           </form>
                           
                         </div>
+                        <hr>
+                        <div id="piechart" style="width: auto; height: 450px;" ></div>
+                        <div id="piechart2" style="width: auto; height: 450px;"  ></div>
+                        <div id="barchart_material" style="width: auto; height: 450px;" ></div>
+                        
                     </div>
                 </div>
                <br>

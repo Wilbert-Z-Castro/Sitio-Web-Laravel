@@ -1,4 +1,4 @@
-@extends('menubase.menubase')
+@extends('layouts.menubase')
 
 @section('template_title')
     {{ __('Create') }} users

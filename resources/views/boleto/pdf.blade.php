@@ -6,8 +6,32 @@
     <link href="(( public_path('css/app.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Reporte PDF</title>
+    <style>
+        .div-con-imagen {
+            width: 200px; /* Ajusta el ancho según tus necesidades */
+            height: 200px; /* Ajusta la altura según tus necesidades */
+            overflow: hidden;
+            border-radius: 50%; /* Hace que el contenedor tenga bordes redondos */
+            border: 2px solid white; /* Borde blanco delgado */
+        }
+        
+        /* Estilos para la imagen dentro del div */
+        .div-con-imagen img {
+            width: 100%; /* Ajusta el ancho para que la imagen cubra todo el contenedor */
+            height: auto; /* Mantiene la proporción original de la imagen */
+            border-radius: 50%; /* Hace que la imagen tenga bordes redondos */
+        }
+    </style>
 </head>
 <body>
+        <center>
+            <div class="div-con-imagen">
+                <img src="{{ public_path() . '/img/escudo.jfif' }}" >
+            </div>
+        </center>
+    <h1>Reporte PDF, Registro de conductores</h1>
+    <a href="{{ route('home') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pie-chart fa-fw"></i> Regresar a Dashboard</a>
+
 <div class="container-fluid my-5">
         <div class="row">
             <br>

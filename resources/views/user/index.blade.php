@@ -17,7 +17,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear registro') }}
                                 </a>
                               </div>
                         </div>
@@ -55,11 +55,11 @@
 											<td>{{ $user->Rol }}</td>
                                             <td>
                                                 <form action="{{ route('users.destroy',$user->id) }}" method="POST" class="eliminar-usuario-form" id="form-eliminar-{{ $user->id }}">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button  type="submit" class="btn btn-danger btn-sm "><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button  type="submit" class="btn btn-danger btn-sm "><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -79,9 +79,9 @@
 @if(session('success')=='User deleted successfully')
     <script>
         Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
+            'Eliminado!',
+            'Su registro ha sido eliminado.',
+            'Exitosamente '
             )
     </script>
 @endif
@@ -97,13 +97,13 @@
                 const conductorId = this.getAttribute('id').replace('form-eliminar-', '');
 
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: '¿Desea continuar ?',
+                    text: "¿Seguro que quieres eliminar el registro?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Si, Eliminarlo!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Si se confirma la eliminación, envía el formulario

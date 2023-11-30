@@ -83,7 +83,7 @@ class ViajeController extends Controller
         $viaje = Viaje::create($request->all());
 
         return redirect()->route('viajes.index')
-            ->with('success', 'Viaje created successfully.');
+            ->with('success', 'Viaje Creado correctamente.');
     }
 
     /**
@@ -122,12 +122,31 @@ class ViajeController extends Controller
      */
     public function update(Request $request, Viaje $viaje)
     {
-        request()->validate(Viaje::$rules);
+        $rules = [
+            'idViaje' => 'required|numeric|min:1|unique:viaje,idViaje',
+            'FechaViaje' => 'required',
+            'Descripcion' => 'required',
+            'Origen' => 'required',
+            'Destino' => 'required',
+            'id_autobus' => 'required',
+            
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        $validator->setCustomMessages([
+            'required' => 'El campo :attribute es obligatorio.',
+            'unique'=> 'El valor :attribute ya existe.',
+            'numeric'=>'El valor debe de ser numerico mayor de 0',
+        ]);
+        $validator->setAttributeNames([
+            'ApeConductor' => 'Apellido',
+            'id_autobus' => 'Matricula',
+
+        ]);
 
         $viaje->update($request->all());
 
         return redirect()->route('viajes.index')
-            ->with('success', 'Viaje updated successfully');
+            ->with('success', 'Viaje actualizado correctamente');
     }
 
     /**

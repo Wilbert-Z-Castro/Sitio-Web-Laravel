@@ -73,7 +73,7 @@ a{
       <a href="{{ route('autobus.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bus fa-fw"></i> Gestión  de Autobuses</a>
       <a href="{{ route('conductors.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-id-card fa-fw"></i>{{ __(' Gestión de Conductores') }}</a>
       <a href="{{ route('viajes.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plane fa-fw"></i> Gestión de Viajes</a>
-      <a href="{{ route('boletos.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i > Gestión de Boletos</a>
+      <a href="{{ route('boletos.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ticket fa-fw"></i > Gestión de Boletos</a>
       <a href="{{ route('users.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user-circle-o fa-fw"></i> Gestión de Usuarios</a>
       <a href="{{ route('reservaciones.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar fa-fw"></i> Hacer Reservaciones</a>
       <a href="{{ route('reservaciones.mostrar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar-check-o fa-fw"></i> Mis reservaciones</a>
@@ -331,7 +331,10 @@ a{
   </div>
 
   <!-- Footer -->
-  
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <h4>FOOTER</h4>
+    <p>Design by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">Zeta</a></p>
+  </footer>
 
   <!-- End page content -->
 </div>
@@ -363,8 +366,5 @@ function w3_close() {
 </script>
 @yield('js')
 </body>
-<footer class="w3-container w3-padding-16 w3-light-grey">
-    <h4>FOOTER</h4>
-    <p>Design by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">Zeta</a></p>
-  </footer>
+
 </html>

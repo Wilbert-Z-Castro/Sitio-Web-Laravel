@@ -106,7 +106,7 @@ class AutobuController extends Controller
         $autobu = Autobu::create($request->all());
 
         return redirect()->route('autobus.index')
-            ->with('success', 'Autobu created successfully.');
+            ->with('success', 'Autobús creado correctamente.');
     }
 
     /**
@@ -150,7 +150,7 @@ class AutobuController extends Controller
         $autobu->update($request->all());
 
         return redirect()->route('autobus.index')
-            ->with('success', 'Autobu updated successfully');
+            ->with('success', 'Autobús actualizado correctamente');
     }
 
     /**

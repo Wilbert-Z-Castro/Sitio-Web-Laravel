@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Validator;
 
 
 /**
@@ -52,7 +53,7 @@ class BoletoController extends Controller
         $boletos = Boleto::paginate();
         $porM = Boleto::whereNotNull('id_viaje')
                         ->groupBy('id_viaje')
-                        ->selectRaw('id_viaje,(select Origen from viaje where idViaje=id_viaje) as Origen,(select Destino from viaje where idViaje=id_viaje) as Destino, count(*) as cantidad, (count(*) / (select count(*) from boleto)) as porcentaje')
+                        ->selectRaw('id_viaje,(select Origen from viaje where idViaje=id_viaje) as Origen,(select Destino from viaje where idViaje=id_viaje) as Destino, count(*) as cantidad, ((count(*) / (select count(*) from boleto))*100 ) as porcentaje')
                         ->orderBy('id_viaje','desc')
                         ->WhereRaw('month((select FechaViaje from viaje where idViaje=id_viaje)) = month(now())')
                         ->take(5)
@@ -89,11 +90,23 @@ class BoletoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $rules = [
+            
             'Cantidad' => 'required|integer|min:1|max:'.$request->input('Disponibles'),
-            // Otras reglas de validación aquí
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+        $validator->setCustomMessages([
+            'Cantidad' => 'El valor de la :attribute es mayor a la cantidad de asientos disponibles.', 
+            'required' => 'El campo :attribute es obligatorio.', 
+            'integer' =>'El campo :attribute tiene que ser de tipo entero',
+            'min' => 'El campo :attribute tiene que ser de tipo entero mayor a uno ( 1 )',
+            //'FechaNa.min' => 'La fecha de nacimiento debe ser al menos 18 años antes de la fecha actual.',
+            
         ]);
-
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         $boleto = Boleto::create($request->all());
         
         $user = Auth::user();
@@ -105,7 +118,7 @@ class BoletoController extends Controller
         $boleto->FechaBoleto=date('Y-m-d');
         $boleto->save();
         return redirect()->route('reservaciones.index')
-            ->with('success', 'Boleto created successfully.');
+            ->with('success', 'Boleto creado correctamente.');
     }
 
     /**
@@ -117,8 +130,8 @@ class BoletoController extends Controller
     public function show($id)
     {
         $boleto = Boleto::find($id);
-
-        return view('boleto.show', compact('boleto'));
+        $user =User::get();
+        return view('boleto.show', compact('boleto','user'));
     }
 
     /**
@@ -158,15 +171,28 @@ class BoletoController extends Controller
     {
         
 
-        $request->validate([
+        $rules = [
+            
             'Cantidad' => 'required|integer|min:1|max:'.$request->input('Disponibles'),
-            // Otras reglas de validación aquí
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+        $validator->setCustomMessages([
+            'Cantidad' => 'El valor de la :attribute es mayor a la cantidad de asientos disponibles.', 
+            'required' => 'El campo :attribute es obligatorio.', 
+            'integer' =>'El campo :attribute tiene que ser de tipo entero',
+            'min' => 'El campo :attribute tiene que ser de tipo entero mayor a uno ( 1 )',
+            //'FechaNa.min' => 'La fecha de nacimiento debe ser al menos 18 años antes de la fecha actual.',
+            
         ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $boleto->update($request->all());
 
-        return redirect()->route('boletos.index')
-            ->with('success', 'Boleto updated successfully');
+        return redirect()->route('reservaciones.mostrar')
+            ->with('success', 'Boleto actualizado correctamente ');
     }
 
     /**
